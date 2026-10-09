@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>OCOM 2026 · สอวน. ค่าย 1 คอมพิวเตอร์ — C++</title>
+  <meta name="description" content="เว็บเนื้อหาเรียน C++ สำหรับค่าย สอวน. ค่าย 1 วิชาคอมพิวเตอร์ ปี 2569 — ใบความรู้ สไลด์ และกิจกรรม" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Prompt:wght@500;600;700&family=Sarabun:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+  <header class="site-header" id="site-header">
+    <a class="brand" href="./">OCOM <span>2026</span></a>
+    <nav class="nav" aria-label="เมนูหลัก">
+      <a href="#lessons">เนื้อหา</a>
+      <a href="#resources">สื่อการสอน</a>
+      <a href="#about">เกี่ยวกับ</a>
+    </nav>
+  </header>
+
+  <section class="hero" aria-label="หน้าแรก">
+    <div class="hero-visual" aria-hidden="true"></div>
+    <pre class="code-panel" aria-hidden="true"><span class="cm">// ค่าย 1 · วิชาคอมพิวเตอร์</span>
+<span class="kw">#include</span> <span class="str">&lt;iostream&gt;</span>
+<span class="kw">using namespace</span> std;
+
+<span class="kw">int</span> <span class="fn">main</span>() {
+  cout &lt;&lt; <span class="str">"สวัสดี สอวน. 2569"</span>;
+  <span class="kw">return</span> 0;
+}</pre>
+    <div class="hero-content">
+      <p class="hero-brand">สอวน. <em>ค่าย 1</em></p>
+      <h1 class="hero-lead">เรียน C++ สู่โอลิมปิกคอมพิวเตอร์</h1>
+      <p class="hero-sub">ใบความรู้ สไลด์ และกิจกรรมสำหรับค่าย สอวน. วิชาคอมพิวเตอร์ ปี 2569</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#lessons">ดูเนื้อหา</a>
+        <a class="btn btn-ghost" href="#resources">สไลด์และใบงาน</a>
+      </div>
+    </div>
+  </section>
+
+  <main>
+    <section class="section" id="lessons">
+      <div class="section-head">
+        <h2>ใบความรู้</h2>
+        <p>เนื้อหาเก็บเป็นไฟล์ Markdown ในโฟลเดอร์ <code>files</code> — กดอ่านได้ทันทีบนเว็บ</p>
+      </div>
+      <ul class="lesson-list">
+        <li class="lesson">
+          <span class="lesson-day">D10-2</span>
+          <div class="lesson-body">
+            <h3>พอยน์เตอร์ (Pointer)</h3>
+            <p>ค่า ที่อยู่ในหน่วยความจำ การใช้ &amp; และ * กับ array และฟังก์ชัน</p>
+          </div>
+          <div class="lesson-links">
+            <a class="chip is-ready" href="lesson.html?src=files/d10-2_pointer.md">อ่านเนื้อหา</a>
+            <span class="chip is-soon" title="จะเพิ่มภายหลัง">สไลด์</span>
+            <span class="chip is-soon" title="จะเพิ่มภายหลัง">ใบงาน</span>
+          </div>
+        </li>
+        <li class="lesson">
+          <span class="lesson-day">D10-3</span>
+          <div class="lesson-body">
+            <h3>ฟังก์ชันเวียนบังเกิด (Recursive)</h3>
+            <p>กรณีฐาน กรณีเวียนเกิด call stack และการแก้ปัญหาด้วย recursion</p>
+          </div>
+          <div class="lesson-links">
+            <a class="chip is-ready" href="lesson.html?src=files/d10-3_Recursive.md">อ่านเนื้อหา</a>
+            <span class="chip is-soon" title="จะเพิ่มภายหลัง">สไลด์</span>
+            <span class="chip is-soon" title="จะเพิ่มภายหลัง">ใบงาน</span>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <section class="section" id="resources">
+      <div class="section-head">
+        <h2>สื่อการสอนอื่น ๆ</h2>
+        <p>ลิงก์ไปยังสไลด์ ใบงาน และกิจกรรมจะใส่เพิ่มเมื่อพร้อม</p>
+      </div>
+      <div class="resource-grid">
+        <div class="resource">
+          <h3>สไลด์บรรยาย</h3>
+          <p>ไฟล์นำเสนอประกอบแต่ละหัวข้อในค่าย</p>
+          <span class="status">เร็ว ๆ นี้</span>
+        </div>
+        <div class="resource">
+          <h3>ใบงาน / แบบฝึกหัด</h3>
+          <p>โจทย์ฝึกเขียนโปรแกรมและทบทวนหลังเรียน</p>
+          <span class="status">เร็ว ๆ นี้</span>
+        </div>
+        <div class="resource">
+          <h3>กิจกรรมในค่าย</h3>
+          <p>กิจกรรมกลุ่ม เกม และโจทย์ร่วมกันในชั้นเรียน</p>
+          <span class="status">เร็ว ๆ นี้</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="section-head">
+        <h2>เกี่ยวกับเว็บนี้</h2>
+        <p>แหล่งรวมเนื้อหาสอนภาษา C++ สำหรับการอบรมค่าย 1 สอวน. วิชาคอมพิวเตอร์</p>
+      </div>
+      <div class="about-note">
+        <p>
+          ไฟล์เนื้อหาอยู่ที่ <code>files/*.md</code> บน GitHub
+          เมื่อเพิ่มบทเรียนใหม่ ให้วางไฟล์ Markdown ในโฟลเดอร์นั้น แล้วเพิ่มรายการในหน้านี้
+          ส่วนลิงก์สไลด์ / ใบงาน / กิจกรรมสามารถใส่ได้ภายหลังโดยเปลี่ยนจากสถานะ “เร็ว ๆ นี้” เป็นลิงก์จริง
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p><strong>OCOM 2026</strong> · สอวน. ค่าย 1 วิชาคอมพิวเตอร์ · C++</p>
+  </footer>
+
+  <script src="assets/main.js"></script>
+</body>
+</html>
