@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ใบงาน Recursive · OCOM 2026</title>
+  <meta name="description" content="ใบงานเรื่องฟังก์ชันเวียนบังเกิด ค่าย สอวน. ค่าย 1 — ตอบออนไลน์แล้วส่งให้อาจารย์" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Prompt:wght@500;600;700&family=Sarabun:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/style.css" />
+  <link rel="stylesheet" href="assets/worksheet.css" />
+</head>
+<body>
+  <header class="site-header" id="site-header">
+    <a class="brand" href="./">OCOM <span>2026</span></a>
+    <nav class="nav" aria-label="เมนูหลัก">
+      <a href="lesson.html?src=files/d10-3_Recursive.md">ใบความรู้</a>
+      <a href="./#lessons">เนื้อหา</a>
+    </nav>
+  </header>
+
+  <main class="section worksheet-page">
+    <p class="lesson-back"><a href="./#lessons">← กลับหน้าแรก</a></p>
+    <h1>ใบงาน · ฟังก์ชันเวียนบังเกิด (Recursive)</h1>
+    <p class="worksheet-lead">
+      มี 5 ตอน รวม 22 ข้อ ใช้ใบความรู้ช่วยได้ ตอน 1–3 ตอบออนไลน์ ตอน 4–5 เขียนโค้ด C++ แล้วรันทดสอบ
+      เมื่อตอบครบแล้วกดส่ง — คำตอบจะถูกส่งไปยังอาจารย์ทางอีเมล
+    </p>
+
+    <form
+      id="worksheet-form"
+      data-subject="ใบงาน Recursive"
+      data-activity="Act10-3 Recursive"
+      data-topic="Recursive"
+      data-retry="worksheet-recursive.html"
+      data-thanks="worksheet-thanks.html"
+      novalidate
+    >
+      <section class="student-card">
+        <h2>ข้อมูลนักเรียน</h2>
+        <div class="field-grid">
+          <div class="field">
+            <label for="student_name">ชื่อ-สกุล *</label>
+            <input id="student_name" name="ชื่อ-สกุล" type="text" required autocomplete="name" />
+          </div>
+          <div class="field">
+            <label for="school">โรงเรียน</label>
+            <input id="school" name="โรงเรียน" type="text" />
+          </div>
+          <div class="field">
+            <label for="seat_no">เลขที่ *</label>
+            <input id="seat_no" name="เลขที่" type="text" required />
+          </div>
+        </div>
+        <div class="field">
+          <label for="student_email">อีเมลติดต่อกลับ (ถ้ามี)</label>
+          <input id="student_email" name="อีเมลนักเรียน" type="email" autocomplete="email" />
+        </div>
+      </section>
+
+      <section class="ws-section">
+        <h2>ตอนที่ 1 · ประกอบความเข้าใจ</h2>
+        <p class="ws-note">เลือกคำตอบที่ถูกต้องที่สุดเพียงข้อเดียว</p>
+
+        <article class="q-block">
+          <h3>ข้อ 1.1</h3>
+          <p class="prompt">กรณีฐานของ <code>int gcdrec(int a, int b) { ... return gcdrec(b, a % b); }</code> คือข้อใด</p>
+          <div class="choices">
+            <label class="choice"><input type="radio" name="ข้อ1.1" value="ก) if (a == 0) return b;" /><span>ก) <code>if (a == 0) return b;</code></span></label>
+            <label class="choice"><input type="radio" name="ข้อ1.1" value="ข) if (b == 0) return a;" /><span>ข) <code>if (b == 0) return a;</code></span></label>
+            <label class="choice"><input type="radio" name="ข้อ1.1" value="ค) if (a == b) return 1;" /><span>ค) <code>if (a == b) return 1;</code></span></label>
+            <label class="choice"><input type="radio" name="ข้อ1.1" value="ง) if (b == 1) return 0;" /><span>ง) <code>if (b == 1) return 0;</code></span></label>
+          </div>
+        </article>
+
+        <article class="q-block">
+          <h3>ข้อ 1.2</h3>
+          <p class="prompt">เรียก <code>fib(5)</code> แบบไม่จำคำตอบ (<code>fib(0)=0</code>, <code>fib(1)=1</code>) ฟังก์ชัน fib จะถูกเรียกทั้งหมดกี่ครั้ง (รวมครั้งแรก)</p>
+          <div class="choices">
+            <label class="choice"><input type="radio" name="ข้อ1.2" value="ก) 5" /><span>ก) 5</span></label>
+            <label class="choice"><input type="radio" name="ข้อ1.2" value="ข) 8" /><span>ข) 8</span></label>
+            <label class="choice"><input type="radio" name="ข้อ1.2" value="ค) 11" /><span>ค) 11</span></label>
+            <label class="choice"><input type="radio" name="ข้อ1.2" value="ง) 15" /><span>ง) 15</span></label>
+          </div>
+        </article>
+
+        <article class="q-block">
+          <h3>ข้อ 1.3</h3>
+          <p class="prompt"><code>powerfast(2, 10)</code> แบ่ง b ครึ่งทุกครั้ง สถานะลึกสุดของ call stack (นับทุกชั้นที่ยังค้างอยู่ตอน b = 0) มีกี่ชั้น</p>
+          <div class="choices">
+            <label class="choice"><input type="radio" name="ข้อ1.3" value="ก) 3" /><span>ก) 3</span></label>
+            <label class="choice"><input type="radio" name="ข้อ1.3" value="ข) 4" /><span>ข) 4</span></label>
+            <label class="choice"><input type="radio" name="ข้อ1.3" value="ค) 5" /><span>ค) 5</span></label>
+            <label class="choice"><input type="radio" name="ข้อ1.3" value="ง) 10" /><span>ง) 10</span></label>
+          </div>
+        </article>
+
+        <article class="q-block">
+          <h3>ข้อ 1.4</h3>
+          <p class="prompt">สาเหตุหลักที่ทำให้โปรแกรม recursive เกิด stack overflow คือ</p>
+          <div class="choices">
+            <label class="choice"><input type="radio" name="ข้อ1.4" value="ก) ตัวแปรชื่อยาวเกินไป" /><span>ก) ตัวแปรชื่อยาวเกินไป</span></label>
+            <label class="choice"><input type="radio" name="ข้อ1.4" value="ข) ไม่มีกรณีฐาน หรือการเรียกไม่เข้าใกล้กรณีฐาน" /><span>ข) ไม่มีกรณีฐาน หรือการเรียกไม่เข้าใกล้กรณีฐาน</span></label>
+            <label class="choice"><input type="radio" name="ข้อ1.4" value="ค) ใช้ long long แทน int" /><span>ค) ใช้ long long แทน int</span></label>
+            <label class="choice"><input type="radio" name="ข้อ1.4" value="ง) เขียน return หลายบรรทัด" /><span>ง) เขียน return หลายบรรทัด</span></label>
+          </div>
+        </article>
+
+        <article class="q-block">
+          <h3>ข้อ 1.5</h3>
+          <p class="prompt">ทำไม <code>tobase(int n, int b)</code> จึงต้องเขียน <code>cout</code> หลังการเรียกตัวเอง</p>
+          <div class="choices">
+            <label class="choice"><input type="radio" name="ข้อ1.5" value="ก) เพราะ C++ บังคับ" /><span>ก) เพราะ C++ บังคับ</span></label>
+            <label class="choice"><input type="radio" name="ข้อ1.5" value="ข) เพื่อให้พิมพ์จากหลักสูงไปหลักต่ำ ซึ่งเศษที่หารได้ออกมาเป็นหลักท้ายก่อน" /><span>ข) เพื่อให้พิมพ์จากหลักสูงไปหลักต่ำ ซึ่งเศษที่หารได้ออกมาเป็นหลักท้ายก่อน</span></label>
+            <label class="choice"><input type="radio" name="ข้อ1.5" value="ค) เพื่อประหยัดหน่วยความจำ" /><span>ค) เพื่อประหยัดหน่วยความจำ</span></label>
+            <label class="choice"><input type="radio" name="ข้อ1.5" value="ง) ไม่ต้องเขียนกรณีฐาน" /><span>ง) ไม่ต้องเขียนกรณีฐาน</span></label>
+          </div>
+        </article>
+      </section>
+
+      <section class="ws-section">
+        <h2>ตอนที่ 2 · Trace และทำนายผล</h2>
+        <p class="ws-note">อ่านโค้ดแล้วเขียนผลลัพธ์ (ถือว่ามี <code>#include &lt;bits/stdc++.h&gt;</code> และ <code>using namespace std;</code>)</p>
+
+        <article class="q-block">
+          <h3>ข้อ 2.1</h3>
+          <p class="prompt"><code>sum_to(4)</code> ได้ค่าเท่าไร</p>
+          <pre class="q-code"><code>int sum_to(int n) {
+    if (n == 0) return 0;
+    return n + sum_to(n - 1);
+}</code></pre>
+          <div class="field">
+            <label for="q2_1">คำตอบ</label>
+            <input id="q2_1" name="ข้อ2.1_ผลลัพธ์" type="text" />
+          </div>
+        </article>
+
+        <article class="q-block">
+          <h3>ข้อ 2.2</h3>
+          <p class="prompt"><code>gcd_rec(84, 36)</code> ได้ค่าเท่าไร</p>
+          <pre class="q-code"><code>int gcd_rec(int a, int b) {
+    if (b == 0) return a;
+    return gcd_rec(b, a % b);
+}</code></pre>
+          <div class="field">
+            <label for="q2_2">คำตอบ</label>
+            <input id="q2_2" name="ข้อ2.2_ผลลัพธ์" type="text" />
+          </div>
+        </article>
+
+        <article class="q-block">
+          <h3>ข้อ 2.3</h3>
+          <p class="prompt"><code>power_fast(3, 5)</code> ได้ค่าเท่าไร</p>
+          <pre class="q-code"><code>long long power_fast(long long a, int b) {
+    if (b == 0) return 1;
+    long long h = power_fast(a, b / 2);
+    if (b % 2 == 0) return h * h;
+    return h * h * a;
+}</code></pre>
+          <div class="field">
+            <label for="q2_3">คำตอบ</label>
+            <input id="q2_3" name="ข้อ2.3_ผลลัพธ์" type="text" />
+          </div>
+        </article>
+
+        <article class="q-block">
+          <h3>ข้อ 2.4</h3>
+          <p class="prompt"><code>to_base(10, 2)</code> พิมพ์อะไรออกมา</p>
+          <pre class="q-code"><code>void to_base(int n, int b) {
+    if (n &gt;= b) to_base(n / b, b);
+    cout &lt;&lt; "0123456789ABCDEF"[n % b];
+}</code></pre>
+          <div class="field">
+            <label for="q2_4">คำตอบ</label>
+            <input id="q2_4" name="ข้อ2.4_ผลลัพธ์" type="text" />
+          </div>
+        </article>
+
+        <article class="q-block">
+          <h3>ข้อ 2.5</h3>
+          <p class="prompt">เรียก <code>f(3)</code> พิมพ์อะไรออกมา (คั่นด้วยช่องว่าง)</p>
+          <pre class="q-code"><code>void f(int n) {
+    if (n == 0) return;
+    f(n - 1);
+    cout &lt;&lt; n &lt;&lt; " ";
+    f(n - 1);
+}</code></pre>
+          <div class="field">
+            <label for="q2_5">คำตอบ</label>
+            <input id="q2_5" name="ข้อ2.5_ผลลัพธ์" type="text" />
+          </div>
+        </article>
+      </section>
+
+      <section class="ws-section">
+        <h2>ตอนที่ 3 · หาจุดบกพร่อง</h2>
+        <p class="ws-note">แต่ละข้อบอกว่าผิดที่ไหน เกิดผลอะไร และแก้อย่างไร</p>
+
+        <article class="q-block">
+          <h3>ข้อ 3.1</h3>
+          <p class="prompt">ต้องการผลรวม 1 ถึง n แต่เรียก <code>sum_bad(0)</code></p>
+          <pre class="q-code"><code>int sum_bad(int n) {
+    if (n == 1) return 1;
+    return n + sum_bad(n - 1);
+}</code></pre>
+          <div class="field">
+            <label for="q3_1">ผิดที่ไหน / เกิดผลอะไร / แก้อย่างไร</label>
+            <textarea id="q3_1" name="ข้อ3.1_วิเคราะห์"></textarea>
+          </div>
+        </article>
+
+        <article class="q-block">
+          <h3>ข้อ 3.2</h3>
+          <p class="prompt">ต้องการ a^b แบบเร็ว ได้คำตอบถูก แต่ <code>power_bad(2, 16)</code> ช้า เพราะอะไร (ฟังก์ชันถูกเรียกกี่ครั้งรวม)</p>
+          <pre class="q-code"><code>long long power_bad(long long a, int b) {
+    if (b == 0) return 1;
+    long long h = power_bad(a, b / 2) * power_bad(a, b / 2);
+    if (b % 2 == 1) h *= a;
+    return h;
+}</code></pre>
+          <div class="field">
+            <label for="q3_2">ผิดที่ไหน / เกิดผลอะไร / แก้อย่างไร</label>
+            <textarea id="q3_2" name="ข้อ3.2_วิเคราะห์"></textarea>
+          </div>
+        </article>
+
+        <article class="q-block">
+          <h3>ข้อ 3.3</h3>
+          <p class="prompt">ต้องการแปลง 13 เป็นฐานสอง แต่ <code>to_base_bad(13, 2)</code> พิมพ์อะไร</p>
+          <pre class="q-code"><code>void to_base_bad(int n, int b) {
+    cout &lt;&lt; "0123456789ABCDEF"[n % b];
+    if (n &gt;= b) to_base_bad(n / b, b);
+}</code></pre>
+          <div class="field">
+            <label for="q3_3">ผิดที่ไหน / พิมพ์อะไร / แก้อย่างไร</label>
+            <textarea id="q3_3" name="ข้อ3.3_วิเคราะห์"></textarea>
+          </div>
+        </article>
+
+        <article class="q-block">
+          <h3>ข้อ 3.4</h3>
+          <p class="prompt">เพิ่ม memo แล้ว แต่ main ไม่ได้เรียก <code>memset(memo, -1, sizeof memo)</code> ก่อน (memo เป็น global จึงเป็น 0 ทั้งก้อน) <code>fibm(10)</code> ได้ค่าใด และควรได้ค่าใด</p>
+          <pre class="q-code"><code>long long memo[100];
+long long fibm(int n) {
+    if (n &lt;= 1) return n;
+    if (memo[n] != -1) return memo[n];
+    return memo[n] = fibm(n - 1) + fibm(n - 2);
+}</code></pre>
+          <div class="field">
+            <label for="q3_4">ได้ค่าใด / ควรได้ค่าใด / แก้อย่างไร</label>
+            <textarea id="q3_4" name="ข้อ3.4_วิเคราะห์"></textarea>
+          </div>
+        </article>
+      </section>
+
+      <section class="ws-section">
+        <h2>ตอนที่ 4 · เขียนโค้ด C++</h2>
+        <p class="ws-note">เขียนฟังก์ชันแบบ recursive เท่านั้น (ห้ามใช้ loop) แล้วรันทดสอบ</p>
+
+        <article class="q-block">
+          <h3>ข้อ 4.1</h3>
+          <p class="prompt"><code>int digitsum(int n)</code> คืนผลรวมของทุกหลัก เช่น <code>digitsum(9875) = 29</code></p>
+          <div class="field">
+            <label for="q4_1">คำตอบ (โค้ด)</label>
+            <textarea id="q4_1" name="ข้อ4.1_โค้ด" class="code-answer"></textarea>
+          </div>
+        </article>
+
+        <article class="q-block">
+          <h3>ข้อ 4.2</h3>
+          <p class="prompt"><code>int popcountrec(int n)</code> นับจำนวนบิต 1 ในฐานสองของ n เช่น <code>popcountrec(13) = 3</code> (13 = 1101)</p>
+          <div class="field">
+            <label for="q4_2">คำตอบ (โค้ด)</label>
+            <textarea id="q4_2" name="ข้อ4.2_โค้ด" class="code-answer"></textarea>
+          </div>
+        </article>
+
+        <article class="q-block">
+          <h3>ข้อ 4.3</h3>
+          <p class="prompt"><code>string tobasestr(int n, int b)</code> คืนสตริงเลขฐาน b (b ไม่เกิน 16 ใช้ A–F) เช่น <code>tobasestr(255, 16) = "FF"</code> และ <code>tobasestr(0, 2) = "0"</code></p>
+          <div class="field">
+            <label for="q4_3">คำตอบ (โค้ด)</label>
+            <textarea id="q4_3" name="ข้อ4.3_โค้ด" class="code-answer"></textarea>
+          </div>
+        </article>
+
+        <article class="q-block">
+          <h3>ข้อ 4.4</h3>
+          <p class="prompt">บันได n ขั้น ก้าวได้ครั้งละ 1 หรือ 2 ขั้น เป็นไปได้กี่แบบ <code>long long stairs(int n)</code> (1 ≤ n ≤ 90) ใช้ memo เช่น <code>stairs(5) = 8</code> และ <code>stairs(10) = ?</code></p>
+          <div class="field">
+            <label for="q4_4">โค้ด + ค่า stairs(10)</label>
+            <textarea id="q4_4" name="ข้อ4.4_โค้ดและคำตอบ" class="code-answer"></textarea>
+          </div>
+        </article>
+
+        <article class="q-block">
+          <h3>ข้อ 4.5</h3>
+          <p class="prompt">หาเลข 3 หลักท้ายของ 7^2025 ด้วย <code>long long powermod(long long a, long long b, long long m)</code> และบอกคำตอบที่ได้จากการรัน</p>
+          <div class="field">
+            <label for="q4_5">โค้ด + คำตอบที่ได้</label>
+            <textarea id="q4_5" name="ข้อ4.5_โค้ดและคำตอบ" class="code-answer"></textarea>
+          </div>
+        </article>
+
+        <article class="q-block">
+          <h3>ข้อ 4.6</h3>
+          <p class="prompt"><code>long long hanoicount(int n)</code> คืนจำนวนครั้งที่ต้องย้ายหอคอยฮานอย n แผ่น โดยไม่ต้องพิมพ์การย้าย — <code>hanoicount(20)</code> ได้เท่าไร</p>
+          <div class="field">
+            <label for="q4_6">โค้ด + ค่า hanoicount(20)</label>
+            <textarea id="q4_6" name="ข้อ4.6_โค้ดและคำตอบ" class="code-answer"></textarea>
+          </div>
+        </article>
+      </section>
+
+      <section class="ws-section">
+        <h2>ตอนที่ 5 · ท้าทาย</h2>
+
+        <article class="q-block">
+          <h3>ข้อ 5.1</h3>
+          <p class="prompt">เขียน <code>void gen(int n, string s)</code> ที่พิมพ์สตริงไบนารียาว n ทุกแบบเรียงจากน้อยไปมาก เช่น <code>gen(3, "")</code> พิมพ์ 000 001 010 … 111 (รวม 8 สตริง)</p>
+          <div class="example-box">ใบ้: เติมอักษรต่อท้าย s แล้วเรียก <code>gen(n−1, ...)</code></div>
+          <div class="field">
+            <label for="q5_1">คำตอบ (โค้ด)</label>
+            <textarea id="q5_1" name="ข้อ5.1_โค้ด" class="code-answer"></textarea>
+          </div>
+        </article>
+
+        <article class="q-block">
+          <h3>ข้อ 5.2</h3>
+          <p class="prompt">เขียน <code>maxrange(int a[], int l, int r)</code> หาค่าสูงสุดในช่วง l..r โดย<strong>แบ่งช่วงครึ่ง</strong> แล้วบอกว่า stack ลึกประมาณกี่ชั้นเมื่อ n = 1,000,000 และค่าสูงสุดของ {3, 8, 1, 9, 4} คือเท่าไร</p>
+          <div class="field">
+            <label for="q5_2">โค้ด + ความลึก stack + ค่าสูงสุด</label>
+            <textarea id="q5_2" name="ข้อ5.2_โค้ดและคำตอบ" class="code-answer"></textarea>
+          </div>
+        </article>
+      </section>
+
+      <div class="submit-bar">
+        <p>ตรวจชื่อและเลขที่ให้ครบก่อนกดส่ง คำตอบจะถูกส่งไปที่อีเมลอาจารย์</p>
+        <button type="submit" class="btn btn-primary" id="submit-btn">ส่งใบงาน</button>
+      </div>
+      <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+    </form>
+  </main>
+
+  <footer class="site-footer">
+    <p><strong>OCOM 2026</strong> · สอวน. ค่าย 1 วิชาคอมพิวเตอร์ · C++</p>
+  </footer>
+
+  <script src="assets/main.js"></script>
+  <script src="assets/worksheet.js"></script>
+</body>
+</html>

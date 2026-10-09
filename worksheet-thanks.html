@@ -20,14 +20,14 @@
 
   <main class="section thanks-page">
     <div class="thanks-card">
-      <p class="thanks-eyebrow">ใบงาน Pointer</p>
+      <p class="thanks-eyebrow" id="thanks-topic">ใบงาน</p>
       <h1>ส่งเรียบร้อยแล้ว</h1>
       <p class="thanks-message" id="thanks-message">
         ระบบได้รับคำตอบแล้ว และส่งไปยังอาจารย์ทางอีเมลเรียบร้อย
       </p>
       <div class="cta-row thanks-actions">
         <a class="btn btn-primary" href="./">กลับหน้าแรก</a>
-        <a class="btn btn-ghost thanks-ghost" href="worksheet-pointer.html">ส่งอีกครั้ง</a>
+        <a class="btn btn-ghost thanks-ghost" id="thanks-retry" href="./">ส่งอีกครั้ง</a>
       </div>
     </div>
   </main>
@@ -40,7 +40,20 @@
     (function () {
       const params = new URLSearchParams(window.location.search);
       const name = params.get("name");
+      const topic = params.get("topic");
+      const retry = params.get("retry");
       const msg = document.getElementById("thanks-message");
+      const topicEl = document.getElementById("thanks-topic");
+      const retryEl = document.getElementById("thanks-retry");
+
+      if (topic && topic.trim()) {
+        topicEl.textContent = "ใบงาน " + topic.trim();
+      }
+      if (retry && /^[\w./-]+\.html$/i.test(retry)) {
+        retryEl.href = retry;
+      } else {
+        retryEl.href = "./#lessons";
+      }
       if (name && name.trim()) {
         msg.textContent =
           "ขอบคุณ " +

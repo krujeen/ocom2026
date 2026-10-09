@@ -7,6 +7,12 @@
 
   if (!form) return;
 
+  const subjectPrefix = form.dataset.subject || "ใบงาน";
+  const activityName = form.dataset.activity || "Worksheet";
+  const thanksBase = form.dataset.thanks || "worksheet-thanks.html";
+  const retryPage = form.dataset.retry || "";
+  const topicLabel = form.dataset.topic || "";
+
   function setStatus(message, type) {
     statusEl.textContent = message;
     statusEl.className = "form-status" + (type ? " is-" + type : "");
@@ -15,10 +21,10 @@
   function buildPayload(formEl) {
     const data = new FormData(formEl);
     const payload = {
-      _subject: "ใบงาน Pointer — " + (data.get("ชื่อ-สกุล") || "ไม่ระบุชื่อ"),
+      _subject: subjectPrefix + " — " + (data.get("ชื่อ-สกุล") || "ไม่ระบุชื่อ"),
       _template: "table",
       _captcha: "false",
-      ใบงาน: "Act10-2 Pointer",
+      ใบงาน: activityName,
     };
 
     data.forEach((value, key) => {
@@ -27,7 +33,6 @@
       }
     });
 
-    // สรุปคำตอบรวมไว้ช่องเดียว อ่านง่ายในอีเมล
     const lines = [];
     data.forEach((value, key) => {
       const text = String(value).trim();
@@ -43,7 +48,7 @@
     event.preventDefault();
 
     if (!form.reportValidity()) {
-      setStatus("กรุณากรอกชื่อ-สกุล โรงเรียน และเลขที่ให้ครบ", "err");
+      setStatus("กรุณากรอกข้อมูลที่จำเป็นให้ครบ", "err");
       form.querySelector(":invalid")?.focus();
       return;
     }
@@ -74,9 +79,11 @@
         throw new Error(result.message || "ส่งไม่สำเร็จ");
       }
 
-      const thanksUrl =
-        "worksheet-thanks.html?name=" + encodeURIComponent(name);
-      window.location.href = thanksUrl;
+      const thanks = new URL(thanksBase, window.location.href);
+      thanks.searchParams.set("name", name);
+      if (topicLabel) thanks.searchParams.set("topic", topicLabel);
+      if (retryPage) thanks.searchParams.set("retry", retryPage);
+      window.location.href = thanks.toString();
       return;
     } catch (err) {
       setStatus(
