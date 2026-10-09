@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ใบงาน Pointer · OCOM 2026</title>
+  <meta name="description" content="ใบงานเรื่องพอยน์เตอร์ ค่าย สอวน. ค่าย 1 — ตอบออนไลน์แล้วส่งให้อาจารย์" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Prompt:wght@500;600;700&family=Sarabun:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/style.css" />
+  <link rel="stylesheet" href="assets/worksheet.css" />
+</head>
+<body>
+  <header class="site-header" id="site-header">
+    <a class="brand" href="./">OCOM <span>2026</span></a>
+    <nav class="nav" aria-label="เมนูหลัก">
+      <a href="lesson.html?src=files/d10-2_pointer.md">ใบความรู้</a>
+      <a href="./#lessons">เนื้อหา</a>
+    </nav>
+  </header>
+
+  <main class="section worksheet-page">
+    <p class="lesson-back"><a href="./#lessons">← กลับหน้าแรก</a></p>
+    <h1>ใบงาน · พอยน์เตอร์ (Pointer)</h1>
+    <p class="worksheet-lead">
+      ใบงานมี 5 ตอน ไล่จากง่ายไปยาก ใช้ร่วมกับใบความรู้เรื่องพอยน์เตอร์
+      เมื่อตอบครบแล้วกดส่ง — คำตอบจะถูกส่งไปยังอาจารย์ทางอีเมล
+    </p>
+
+    <form id="worksheet-form" novalidate>
+      <section class="student-card">
+        <h2>ข้อมูลนักเรียน</h2>
+        <div class="field-grid">
+          <div class="field">
+            <label for="student_name">ชื่อ-สกุล *</label>
+            <input id="student_name" name="ชื่อ-สกุล" type="text" required autocomplete="name" />
+          </div>
+          <div class="field">
+            <label for="school">โรงเรียน *</label>
+            <input id="school" name="โรงเรียน" type="text" required />
+          </div>
+          <div class="field">
+            <label for="seat_no">เลขที่ *</label>
+            <input id="seat_no" name="เลขที่" type="text" required />
+          </div>
+        </div>
+        <div class="field">
+          <label for="student_email">อีเมลติดต่อกลับ (ถ้ามี)</label>
+          <input id="student_email" name="อีเมลนักเรียน" type="email" autocomplete="email" />
+        </div>
+      </section>
+
+      <section class="ws-section">
+        <h2>ตอนที่ 1 · ไล่โค้ดและทายผลลัพธ์</h2>
+        <p class="ws-note">เขียนผลลัพธ์ที่โปรแกรมแสดงบนหน้าจอ โค้ดทุกข้อถือว่ามี <code>#include &lt;bits/stdc++.h&gt;</code> และ <code>using namespace std;</code> อยู่แล้ว</p>
+
+        <article class="q-block">
+          <h3>ข้อ 1.1</h3>
+          <pre class="q-code"><code>int x = 5, y = 8;
+int *p = &amp;x;
+*p = *p + 3;
+p = &amp;y;
+*p = *p * 2;
+cout &lt;&lt; x &lt;&lt; " " &lt;&lt; y;</code></pre>
+          <div class="field">
+            <label for="q1_1">ผลลัพธ์</label>
+            <input id="q1_1" name="ข้อ1.1_ผลลัพธ์" type="text" />
+          </div>
+        </article>
+
+        <article class="q-block">
+          <h3>ข้อ 1.2</h3>
+          <pre class="q-code"><code>int a = 4;
+int *p = &amp;a;
+int *q = p;
+*q = 10;
+cout &lt;&lt; a &lt;&lt; " " &lt;&lt; *p;</code></pre>
+          <div class="field">
+            <label for="q1_2">ผลลัพธ์</label>
+            <input id="q1_2" name="ข้อ1.2_ผลลัพธ์" type="text" />
+          </div>
+        </article>
+
+        <article class="q-block">
+          <h3>ข้อ 1.3</h3>
+          <pre class="q-code"><code>int arr[5] = {3, 6, 9, 12, 15};
+int *p = arr + 1;
+cout &lt;&lt; *p &lt;&lt; " " &lt;&lt; *(p + 2) &lt;&lt; " " &lt;&lt; p[1];</code></pre>
+          <div class="field">
+            <label for="q1_3">ผลลัพธ์</label>
+            <input id="q1_3" name="ข้อ1.3_ผลลัพธ์" type="text" />
+          </div>
+        </article>
+
+        <article class="q-block">
+          <h3>ข้อ 1.4</h3>
+          <pre class="q-code"><code>int arr[4] = {1, 2, 3, 4};
+for (int *p = arr; p &lt; arr + 4; p++)
+    *p = *p * 10;
+cout &lt;&lt; arr[0] + arr[3];</code></pre>
+          <div class="field">
+            <label for="q1_4">ผลลัพธ์</label>
+            <input id="q1_4" name="ข้อ1.4_ผลลัพธ์" type="text" />
+          </div>
+        </article>
+
+        <article class="q-block">
+          <h3>ข้อ 1.5</h3>
+          <pre class="q-code"><code>void f(int a, int &amp;b, int *c) {
+    a++;
+    b++;
+    (*c)++;
+}
+int main() {
+    int x = 1, y = 1, z = 1;
+    f(x, y, &amp;z);
+    cout &lt;&lt; x &lt;&lt; y &lt;&lt; z;
+}</code></pre>
+          <div class="field">
+            <label for="q1_5">ผลลัพธ์</label>
+            <input id="q1_5" name="ข้อ1.5_ผลลัพธ์" type="text" />
+          </div>
+        </article>
+
+        <article class="q-block">
+          <h3>ข้อ 1.6</h3>
+          <pre class="q-code"><code>int x = 7;
+int *p = &amp;x;
+int **pp = &amp;p;
+**pp = 20;
+cout &lt;&lt; x &lt;&lt; " " &lt;&lt; (*pp == &amp;x);</code></pre>
+          <div class="field">
+            <label for="q1_6">ผลลัพธ์</label>
+            <input id="q1_6" name="ข้อ1.6_ผลลัพธ์" type="text" />
+          </div>
+        </article>
+
+        <article class="q-block">
+          <h3>ข้อ 1.7</h3>
+          <pre class="q-code"><code>int arr[3] = {1, 2, 3};
+for (int v : arr) v = v * 5;
+for (int &amp;v : arr) v = v + 1;
+cout &lt;&lt; arr[0] &lt;&lt; arr[1] &lt;&lt; arr[2];</code></pre>
+          <div class="field">
+            <label for="q1_7">ผลลัพธ์</label>
+            <input id="q1_7" name="ข้อ1.7_ผลลัพธ์" type="text" />
+          </div>
+        </article>
+
+        <article class="q-block">
+          <h3>ข้อ 1.8</h3>
+          <pre class="q-code"><code>int arr[6] = {2, 4, 6, 8, 10, 12};
+int *p = arr + 1, *q = arr + 5;
+cout &lt;&lt; q - p &lt;&lt; " " &lt;&lt; *q - *p;</code></pre>
+          <div class="field">
+            <label for="q1_8">ผลลัพธ์</label>
+            <input id="q1_8" name="ข้อ1.8_ผลลัพธ์" type="text" />
+          </div>
+        </article>
+      </section>
+
+      <section class="ws-section">
+        <h2>ตอนที่ 2 · เลือกคำตอบที่ถูกต้อง</h2>
+        <p class="ws-note">เลือกคำตอบที่ถูกต้องที่สุดเพียงข้อเดียว</p>
+
+        <article class="q-block">
+          <h3>ข้อ 2.1</h3>
+          <p class="prompt">ถ้า <code>int x;</code> อยู่ที่ที่อยู่ 0x200 และ <code>int *p = &amp;x;</code> (int ขนาด 4 ไบต์) ค่าของ <code>p + 2</code> คือข้อใด</p>
+          <div class="choices">
+            <label class="choice"><input type="radio" name="ข้อ2.1" value="ก. 0x202" /><span>ก. 0x202</span></label>
+            <label class="choice"><input type="radio" name="ข้อ2.1" value="ข. 0x204" /><span>ข. 0x204</span></label>
+            <label class="choice"><input type="radio" name="ข้อ2.1" value="ค. 0x208" /><span>ค. 0x208</span></label>
+            <label class="choice"><input type="radio" name="ข้อ2.1" value="ง. 0x220" /><span>ง. 0x220</span></label>
+          </div>
+        </article>
+
+        <article class="q-block">
+          <h3>ข้อ 2.2</h3>
+          <p class="prompt">คำสั่ง <code>int* a, b;</code> ข้อใดถูกต้อง</p>
+          <div class="choices">
+            <label class="choice"><input type="radio" name="ข้อ2.2" value="ก. a และ b เป็น pointer ทั้งคู่" /><span>ก. a และ b เป็น pointer ทั้งคู่</span></label>
+            <label class="choice"><input type="radio" name="ข้อ2.2" value="ข. a เป็น pointer ส่วน b เป็น int" /><span>ข. a เป็น pointer ส่วน b เป็น int</span></label>
+            <label class="choice"><input type="radio" name="ข้อ2.2" value="ค. a เป็น int ส่วน b เป็น pointer" /><span>ค. a เป็น int ส่วน b เป็น pointer</span></label>
+            <label class="choice"><input type="radio" name="ข้อ2.2" value="ง. คอมไพล์ไม่ผ่าน" /><span>ง. คอมไพล์ไม่ผ่าน</span></label>
+          </div>
+        </article>
+
+        <article class="q-block">
+          <h3>ข้อ 2.3</h3>
+          <p class="prompt">ข้อใด <strong>ไม่ถูกต้อง</strong> เกี่ยวกับ reference</p>
+          <div class="choices">
+            <label class="choice"><input type="radio" name="ข้อ2.3" value="ก. ต้องกำหนดค่าตอนประกาศ" /><span>ก. ต้องกำหนดค่าตอนประกาศ</span></label>
+            <label class="choice"><input type="radio" name="ข้อ2.3" value="ข. เปลี่ยนไปอ้างอิงตัวแปรอื่นได้ภายหลัง" /><span>ข. เปลี่ยนไปอ้างอิงตัวแปรอื่นได้ภายหลัง</span></label>
+            <label class="choice"><input type="radio" name="ข้อ2.3" value="ค. ไม่สร้างกล่องใหม่ในหน่วยความจำ" /><span>ค. ไม่สร้างกล่องใหม่ในหน่วยความจำ</span></label>
+            <label class="choice"><input type="radio" name="ข้อ2.3" value="ง. ใช้งานเหมือนตัวแปรปกติ" /><span>ง. ใช้งานเหมือนตัวแปรปกติ</span></label>
+          </div>
+        </article>
+
+        <article class="q-block">
+          <h3>ข้อ 2.4</h3>
+          <p class="prompt"><code>arr[3]</code> มีความหมายเท่ากับข้อใด</p>
+          <div class="choices">
+            <label class="choice"><input type="radio" name="ข้อ2.4" value="ก. *arr + 3" /><span>ก. <code>*arr + 3</code></span></label>
+            <label class="choice"><input type="radio" name="ข้อ2.4" value="ข. *(arr + 3)" /><span>ข. <code>*(arr + 3)</code></span></label>
+            <label class="choice"><input type="radio" name="ข้อ2.4" value="ค. &amp;arr + 3" /><span>ค. <code>&amp;arr + 3</code></span></label>
+            <label class="choice"><input type="radio" name="ข้อ2.4" value="ง. &amp;(arr + 3)" /><span>ง. <code>&amp;(arr + 3)</code></span></label>
+          </div>
+        </article>
+
+        <article class="q-block">
+          <h3>ข้อ 2.5</h3>
+          <p class="prompt">ถ้า p เป็น pointer ชี้ไปที่ struct แล้ว <code>p-&gt;score</code> เท่ากับข้อใด</p>
+          <div class="choices">
+            <label class="choice"><input type="radio" name="ข้อ2.5" value="ก. *p.score" /><span>ก. <code>*p.score</code></span></label>
+            <label class="choice"><input type="radio" name="ข้อ2.5" value="ข. (*p).score" /><span>ข. <code>(*p).score</code></span></label>
+            <label class="choice"><input type="radio" name="ข้อ2.5" value="ค. &amp;p.score" /><span>ค. <code>&amp;p.score</code></span></label>
+            <label class="choice"><input type="radio" name="ข้อ2.5" value="ง. *(p.score)" /><span>ง. <code>*(p.score)</code></span></label>
+          </div>
+        </article>
+
+        <article class="q-block">
+          <h3>ข้อ 2.6</h3>
+          <p class="prompt">เหตุใดคำสั่ง <code>scanf("%d", &amp;x);</code> จึงต้องใส่ <code>&amp;</code> หน้า x</p>
+          <div class="choices">
+            <label class="choice"><input type="radio" name="ข้อ2.6" value="ก. เพื่อให้โปรแกรมทำงานเร็วขึ้น" /><span>ก. เพื่อให้โปรแกรมทำงานเร็วขึ้น</span></label>
+            <label class="choice"><input type="radio" name="ข้อ2.6" value="ข. scanf ต้องรู้ที่อยู่ของ x เพื่อเขียนค่าลงไป" /><span>ข. scanf ต้องรู้ที่อยู่ของ x เพื่อเขียนค่าลงไป</span></label>
+            <label class="choice"><input type="radio" name="ข้อ2.6" value="ค. เพื่อแปลงชนิดข้อมูลของ x" /><span>ค. เพื่อแปลงชนิดข้อมูลของ x</span></label>
+            <label class="choice"><input type="radio" name="ข้อ2.6" value="ง. ไม่จำเป็นต้องใส่ก็ได้" /><span>ง. ไม่จำเป็นต้องใส่ก็ได้</span></label>
+          </div>
+        </article>
+      </section>
+
+      <section class="ws-section">
+        <h2>ตอนที่ 3 · หาที่ผิดและแก้ไข</h2>
+        <p class="ws-note">แต่ละข้อมีข้อผิดพลาด 1 จุด ให้ระบุบรรทัดที่ผิด อธิบายเหตุผล และเขียนโค้ดที่แก้แล้ว</p>
+
+        <article class="q-block">
+          <h3>ข้อ 3.1</h3>
+          <pre class="q-code"><code>int *p;
+*p = 10;
+cout &lt;&lt; *p;</code></pre>
+          <div class="field">
+            <label for="q3_1_why">บรรทัดที่ผิด / เหตุผล</label>
+            <textarea id="q3_1_why" name="ข้อ3.1_เหตุผล"></textarea>
+          </div>
+          <div class="field">
+            <label for="q3_1_fix">โค้ดที่แก้แล้ว</label>
+            <textarea id="q3_1_fix" name="ข้อ3.1_โค้ดแก้" class="code-answer"></textarea>
+          </div>
+        </article>
+
+        <article class="q-block">
+          <h3>ข้อ 3.2</h3>
+          <p class="prompt">ต้องการหาผลรวมของสมาชิกทุกตัวในอาร์เรย์</p>
+          <pre class="q-code"><code>int arr[5] = {1, 2, 3, 4, 5};
+int sum = 0;
+for (int *p = arr; p &lt;= arr + 5; p++)
+    sum += *p;</code></pre>
+          <div class="field">
+            <label for="q3_2_why">บรรทัดที่ผิด / เหตุผล</label>
+            <textarea id="q3_2_why" name="ข้อ3.2_เหตุผล"></textarea>
+          </div>
+          <div class="field">
+            <label for="q3_2_fix">โค้ดที่แก้แล้ว</label>
+            <textarea id="q3_2_fix" name="ข้อ3.2_โค้ดแก้" class="code-answer"></textarea>
+          </div>
+        </article>
+
+        <article class="q-block">
+          <h3>ข้อ 3.3</h3>
+          <p class="prompt">ต้องการให้โปรแกรมแสดงผล 15</p>
+          <pre class="q-code"><code>void addTen(int x) {
+    x += 10;
+}
+int main() {
+    int a = 5;
+    addTen(a);
+    cout &lt;&lt; a;
+}</code></pre>
+          <div class="field">
+            <label for="q3_3_why">บรรทัดที่ผิด / เหตุผล</label>
+            <textarea id="q3_3_why" name="ข้อ3.3_เหตุผล"></textarea>
+          </div>
+          <div class="field">
+            <label for="q3_3_fix">โค้ดที่แก้แล้ว</label>
+            <textarea id="q3_3_fix" name="ข้อ3.3_โค้ดแก้" class="code-answer"></textarea>
+          </div>
+        </article>
+
+        <article class="q-block">
+          <h3>ข้อ 3.4</h3>
+          <pre class="q-code"><code>int *getValue() {
+    int x = 42;
+    return &amp;x;
+}
+int main() {
+    int *p = getValue();
+    cout &lt;&lt; *p;
+}</code></pre>
+          <div class="field">
+            <label for="q3_4_why">บรรทัดที่ผิด / เหตุผล</label>
+            <textarea id="q3_4_why" name="ข้อ3.4_เหตุผล"></textarea>
+          </div>
+          <div class="field">
+            <label for="q3_4_fix">โค้ดที่แก้แล้ว</label>
+            <textarea id="q3_4_fix" name="ข้อ3.4_โค้ดแก้" class="code-answer"></textarea>
+          </div>
+        </article>
+      </section>
+
+      <section class="ws-section">
+        <h2>ตอนที่ 4 · เขียนฟังก์ชัน</h2>
+        <p class="ws-note">เขียนฟังก์ชันตามที่กำหนด และเขียน <code>main</code> เพื่อทดสอบ</p>
+
+        <article class="q-block">
+          <h3>ข้อ 4.1</h3>
+          <p class="prompt">เขียนฟังก์ชันเพิ่มค่าตัวแปรขึ้น 1 จำนวน 2 แบบ</p>
+          <pre class="q-code"><code>void addOnePtr(int * x); // แบบ pointer
+void addOneRef(int &amp; x); // แบบ reference</code></pre>
+          <div class="example-box">ตัวอย่าง: <code>int a = 5; addOnePtr(&amp;a); addOneRef(a);</code> แล้ว a มีค่า 7</div>
+          <div class="field">
+            <label for="q4_1">คำตอบ (โค้ด)</label>
+            <textarea id="q4_1" name="ข้อ4.1_โค้ด" class="code-answer"></textarea>
+          </div>
+        </article>
+
+        <article class="q-block">
+          <h3>ข้อ 4.2</h3>
+          <p class="prompt">เขียนฟังก์ชันหาผลรวมและค่าเฉลี่ยของอาร์เรย์ โดยท่องอาร์เรย์ด้วย pointer</p>
+          <pre class="q-code"><code>void sumAndAvg(int a[], int n, long long &amp;sum, double &amp;avg);</code></pre>
+          <div class="example-box">ตัวอย่าง: a = {4, 7, 1, 8}, n = 4 ได้ sum = 20 และ avg = 5</div>
+          <div class="field">
+            <label for="q4_2">คำตอบ (โค้ด)</label>
+            <textarea id="q4_2" name="ข้อ4.2_โค้ด" class="code-answer"></textarea>
+          </div>
+        </article>
+
+        <article class="q-block">
+          <h3>ข้อ 4.3</h3>
+          <p class="prompt">เขียนฟังก์ชันนับจำนวนเลขคู่และเลขคี่ในอาร์เรย์</p>
+          <pre class="q-code"><code>void countEvenOdd(int a[], int n, int &amp;even, int &amp;odd);</code></pre>
+          <div class="example-box">ตัวอย่าง: a = {3, 8, 5, 6, 10}, n = 5 ได้ even = 3 และ odd = 2</div>
+          <div class="field">
+            <label for="q4_3">คำตอบ (โค้ด)</label>
+            <textarea id="q4_3" name="ข้อ4.3_โค้ด" class="code-answer"></textarea>
+          </div>
+        </article>
+
+        <article class="q-block">
+          <h3>ข้อ 4.4</h3>
+          <p class="prompt">เขียนฟังก์ชันเรียงค่าตัวแปร 3 ตัวจากน้อยไปมาก โดยแก้ค่าตัวแปรเดิม</p>
+          <pre class="q-code"><code>void sort3(int &amp; a, int &amp; b, int &amp; c);</code></pre>
+          <div class="example-box">ตัวอย่าง: <code>int x = 9, y = 2, z = 5; sort3(x, y, z);</code> ได้ x = 2, y = 5, z = 9</div>
+          <div class="field">
+            <label for="q4_4">คำตอบ (โค้ด)</label>
+            <textarea id="q4_4" name="ข้อ4.4_โค้ด" class="code-answer"></textarea>
+          </div>
+        </article>
+      </section>
+
+      <section class="ws-section">
+        <h2>ตอนที่ 5 · โจทย์ประยุกต์</h2>
+        <p class="ws-note">เขียนโปรแกรมให้สมบูรณ์ ทุกข้อต้องท่องอาร์เรย์ด้วย pointer ห้ามใช้ดัชนี <code>a[i]</code></p>
+
+        <article class="q-block">
+          <h3>ข้อ 5.1 กลับลำดับอาร์เรย์</h3>
+          <p class="prompt">ใช้ pointer สองตัว ตัวหนึ่งเริ่มจากหัว อีกตัวเริ่มจากท้าย แล้วสลับค่าและขยับเข้าหากัน</p>
+          <ul class="ws-note">
+            <li><strong>ข้อมูลเข้า</strong> บรรทัดแรก N บรรทัดที่สองเป็นจำนวนเต็ม N ตัว</li>
+            <li><strong>ข้อมูลออก</strong> สมาชิกหลังกลับลำดับ คั่นด้วยช่องว่าง</li>
+            <li><strong>ข้อจำกัด</strong> 1 ≤ N ≤ 100,000</li>
+          </ul>
+          <table class="ws-table">
+            <thead><tr><th>ข้อมูลเข้า</th><th>ข้อมูลออก</th></tr></thead>
+            <tbody>
+              <tr><td>5
+1 2 3 4 5</td><td>5 4 3 2 1</td></tr>
+              <tr><td>4
+7 -2 9 0</td><td>0 9 -2 7</td></tr>
+            </tbody>
+          </table>
+          <div class="field">
+            <label for="q5_1">คำตอบ (โค้ด)</label>
+            <textarea id="q5_1" name="ข้อ5.1_โค้ด" class="code-answer"></textarea>
+          </div>
+        </article>
+
+        <article class="q-block">
+          <h3>ข้อ 5.2 หมุนอาร์เรย์ไปทางซ้าย K ตำแหน่ง</h3>
+          <p class="prompt">สมาชิกที่หลุดจากด้านซ้ายจะวนไปต่อท้าย</p>
+          <ul class="ws-note">
+            <li><strong>ข้อมูลเข้า</strong> บรรทัดแรก N และ K บรรทัดที่สองเป็นจำนวนเต็ม N ตัว</li>
+            <li><strong>ข้อมูลออก</strong> สมาชิกหลังหมุน คั่นด้วยช่องว่าง</li>
+            <li><strong>ข้อจำกัด</strong> 1 ≤ N ≤ 100,000 และ 0 ≤ K ≤ 10^9</li>
+          </ul>
+          <table class="ws-table">
+            <thead><tr><th>ข้อมูลเข้า</th><th>ข้อมูลออก</th></tr></thead>
+            <tbody>
+              <tr><td>5 2
+1 2 3 4 5</td><td>3 4 5 1 2</td></tr>
+              <tr><td>3 7
+10 20 30</td><td>20 30 10</td></tr>
+            </tbody>
+          </table>
+          <div class="example-box">คำใบ้: ใช้ฟังก์ชันกลับลำดับจากข้อ 5.1 สามครั้ง และสังเกตว่าหมุน N ครั้งได้อาร์เรย์เดิม</div>
+          <div class="field">
+            <label for="q5_2">คำตอบ (โค้ด)</label>
+            <textarea id="q5_2" name="ข้อ5.2_โค้ด" class="code-answer"></textarea>
+          </div>
+        </article>
+
+        <article class="q-block">
+          <h3>ข้อ 5.3 รวมอาร์เรย์ที่เรียงแล้ว</h3>
+          <p class="prompt">รวมอาร์เรย์ A และ B ที่เรียงแล้วด้วย pointer สองตัว ห้ามใช้ <code>sort</code></p>
+          <ul class="ws-note">
+            <li><strong>ข้อมูลเข้า</strong> N / สมาชิก A / M / สมาชิก B</li>
+            <li><strong>ข้อมูลออก</strong> สมาชิกที่รวมแล้ว N + M ตัว คั่นด้วยช่องว่าง</li>
+            <li><strong>ข้อจำกัด</strong> 1 ≤ N, M ≤ 100,000</li>
+          </ul>
+          <table class="ws-table">
+            <thead><tr><th>ข้อมูลเข้า</th><th>ข้อมูลออก</th></tr></thead>
+            <tbody>
+              <tr><td>3
+1 4 7
+4
+2 3 8 9</td><td>1 2 3 4 7 8 9</td></tr>
+              <tr><td>2
+5 5
+3
+1 5 6</td><td>1 5 5 5 6</td></tr>
+            </tbody>
+          </table>
+          <div class="field">
+            <label for="q5_3">คำตอบ (โค้ด)</label>
+            <textarea id="q5_3" name="ข้อ5.3_โค้ด" class="code-answer"></textarea>
+          </div>
+        </article>
+      </section>
+
+      <div class="submit-bar">
+        <p>ตรวจชื่อ โรงเรียน และเลขที่ให้ครบก่อนกดส่ง คำตอบจะถูกส่งไปที่อีเมลอาจารย์</p>
+        <button type="submit" class="btn btn-primary" id="submit-btn">ส่งใบงาน</button>
+      </div>
+      <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+    </form>
+  </main>
+
+  <footer class="site-footer">
+    <p><strong>OCOM 2026</strong> · สอวน. ค่าย 1 วิชาคอมพิวเตอร์ · C++</p>
+  </footer>
+
+  <script src="assets/main.js"></script>
+  <script src="assets/worksheet.js"></script>
+</body>
+</html>
