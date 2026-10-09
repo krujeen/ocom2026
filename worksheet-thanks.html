@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ส่งเรียบร้อยแล้ว · OCOM 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Prompt:wght@500;600;700&family=Sarabun:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/style.css" />
+  <link rel="stylesheet" href="assets/worksheet.css" />
+</head>
+<body>
+  <header class="site-header" id="site-header">
+    <a class="brand" href="./">OCOM <span>2026</span></a>
+    <nav class="nav" aria-label="เมนูหลัก">
+      <a href="./#lessons">เนื้อหา</a>
+    </nav>
+  </header>
+
+  <main class="section thanks-page">
+    <div class="thanks-card">
+      <p class="thanks-eyebrow">ใบงาน Pointer</p>
+      <h1>ส่งเรียบร้อยแล้ว</h1>
+      <p class="thanks-message" id="thanks-message">
+        ระบบได้รับคำตอบแล้ว และส่งไปยังอาจารย์ทางอีเมลเรียบร้อย
+      </p>
+      <div class="cta-row thanks-actions">
+        <a class="btn btn-primary" href="./">กลับหน้าแรก</a>
+        <a class="btn btn-ghost thanks-ghost" href="worksheet-pointer.html">ส่งอีกครั้ง</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p><strong>OCOM 2026</strong> · สอวน. ค่าย 1 วิชาคอมพิวเตอร์ · C++</p>
+  </footer>
+
+  <script>
+    (function () {
+      const params = new URLSearchParams(window.location.search);
+      const name = params.get("name");
+      const msg = document.getElementById("thanks-message");
+      if (name && name.trim()) {
+        msg.textContent =
+          "ขอบคุณ " +
+          name.trim() +
+          " ระบบได้รับคำตอบแล้ว และส่งไปยังอาจารย์ทางอีเมลเรียบร้อย";
+      }
+    })();
+  </script>
+</body>
+</html>

@@ -74,11 +74,10 @@
         throw new Error(result.message || "ส่งไม่สำเร็จ");
       }
 
-      setStatus(
-        "ส่งใบงานเรียบร้อยแล้ว อาจารย์จะได้รับคำตอบทางอีเมล หากเป็นการส่งครั้งแรกของเว็บไซต์ อาจต้องยืนยันอีเมล FormSubmit ก่อน",
-        "ok"
-      );
-      submitBtn.textContent = "ส่งแล้ว";
+      const thanksUrl =
+        "worksheet-thanks.html?name=" + encodeURIComponent(name);
+      window.location.href = thanksUrl;
+      return;
     } catch (err) {
       setStatus(
         "ส่งไม่สำเร็จ: " +

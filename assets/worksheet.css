@@ -266,3 +266,58 @@
   background: #fde8e8;
   color: #a33;
 }
+
+.thanks-page {
+  max-width: 640px;
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+}
+
+.thanks-card {
+  width: 100%;
+  padding: 2rem 0 1rem;
+  opacity: 0;
+  transform: translateY(16px);
+  animation: rise-in 0.7s ease forwards;
+}
+
+.thanks-eyebrow {
+  margin: 0 0 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--accent-deep);
+}
+
+.thanks-card h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 2.8rem);
+  margin: 0 0 0.75rem;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+
+.thanks-message {
+  margin: 0 0 1.75rem;
+  color: var(--ink-soft);
+  font-size: 1.1rem;
+  max-width: 34ch;
+}
+
+.thanks-actions {
+  opacity: 1;
+  transform: none;
+  animation: none;
+}
+
+.thanks-ghost {
+  background: transparent;
+  color: var(--ink);
+  border-color: var(--line);
+}
+
+.thanks-ghost:hover {
+  border-color: var(--accent);
+  color: var(--accent-deep);
+}
