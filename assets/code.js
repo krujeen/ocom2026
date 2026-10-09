@@ -15,6 +15,33 @@
     "pointer_p24.cpp": "Pointer กับ struct",
     "pointer_p25.cpp": "จองหน่วยความจำด้วย new",
     "pointer_p27.cpp": "ข้อผิดพลาดที่พบบ่อย",
+    "Recursive_p09.cpp": "แฟกทอเรียล (factorial)",
+    "Recursive_p12.cpp": "พิมพ์ลง / พิมพ์ขึ้น (down / up)",
+    "Recursive_p13.cpp": "ผลรวม 1 ถึง n",
+    "Recursive_p15.cpp": "หรม. แบบเวียนเกิด (GCD)",
+    "Recursive_p17.cpp": "ฟีโบนัชชี",
+    "Recursive_p20.cpp": "ฟีโบนัชชี + memoization",
+    "Recursive_p23.cpp": "ยกกำลังแบบเร็ว (power fast)",
+    "Recursive_p26.cpp": "ยกกำลังแบบเร็วพร้อม mod",
+    "Recursive_p28.cpp": "แปลงเลขฐานแบบเวียนเกิด",
+    "Recursive_p30.cpp": "ผลรวมอาร์เรย์",
+    "Recursive_p31.cpp": "ค่ามากสุดในช่วง (divide & conquer)",
+    "Recursive_p32.cpp": "ค้นหาแบบทวิภาค (binary search)",
+    "Recursive_p33.cpp": "กลับสตริง / ตรวจพาลินโดรม",
+    "Recursive_p35.cpp": "หอคอยฮานอย (Tower of Hanoi)",
+  };
+
+  const LISTS = {
+    code_pointer: {
+      href: "pointer-codes.html",
+      label: "← รายการโค้ด Pointer",
+      nav: "โค้ด Pointer",
+    },
+    code_Recursive: {
+      href: "recursive-codes.html",
+      label: "← รายการโค้ด Recursive",
+      nav: "โค้ด Recursive",
+    },
   };
 
   const params = new URLSearchParams(window.location.search);
@@ -26,6 +53,8 @@
   const btnCopyCode = document.getElementById("btn-copy-code");
   const btnCopyLink = document.getElementById("btn-copy-link");
   const btnRaw = document.getElementById("btn-raw");
+  const backLink = document.getElementById("code-back");
+  const navCodes = document.getElementById("nav-codes");
 
   let sourceText = "";
 
@@ -57,16 +86,29 @@
     document.body.removeChild(ta);
   }
 
-  if (!src || !/^code_pointer\/[\w.-]+\.cpp$/i.test(src)) {
+  if (!src || !/^code_(pointer|Recursive)\/[\w.-]+\.cpp$/i.test(src)) {
     fileEl.textContent = "—";
     titleEl.textContent = "ไม่พบไฟล์โค้ด";
     sourceEl.querySelector("code").textContent =
-      "พาธไม่ถูกต้อง ใช้รูปแบบ code_pointer/ชื่อไฟล์.cpp";
-    showHint("เปิดจากหน้ารายการโค้ด Pointer อีกครั้ง", true);
+      "พาธไม่ถูกต้อง ใช้รูปแบบ code_pointer/… หรือ code_Recursive/…";
+    showHint("เปิดจากหน้ารายการโค้ดอีกครั้ง", true);
     btnCopyCode.disabled = true;
     btnCopyLink.disabled = true;
     btnRaw.removeAttribute("href");
     return;
+  }
+
+  const folder = src.split("/")[0];
+  const listInfo = LISTS[folder];
+  if (listInfo) {
+    if (backLink) {
+      backLink.href = listInfo.href;
+      backLink.textContent = listInfo.label;
+    }
+    if (navCodes) {
+      navCodes.href = listInfo.href;
+      navCodes.textContent = listInfo.nav;
+    }
   }
 
   const filename = src.split("/").pop();
