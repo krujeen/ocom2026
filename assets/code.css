@@ -1,0 +1,147 @@
+.lesson-back {
+  margin: 0 0 1.25rem;
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+}
+
+.lesson-back a {
+  text-decoration: none;
+  color: var(--ink-soft);
+}
+
+.lesson-back a:hover {
+  color: var(--accent-deep);
+}
+
+.code-list-page,
+.code-view-page {
+  max-width: 900px;
+}
+
+.code-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.code-item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.9rem 1.1rem;
+  align-items: center;
+  padding: 0.95rem 1.1rem;
+  border-bottom: 1px solid var(--line);
+  text-decoration: none;
+  color: inherit;
+  transition: background 0.2s ease;
+}
+
+.code-item:hover {
+  background: var(--accent-glow);
+}
+
+.code-slide {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--accent-deep);
+  background: var(--accent-glow);
+  padding: 0.35rem 0.55rem;
+  border-radius: 6px;
+  white-space: nowrap;
+}
+
+.code-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  min-width: 0;
+}
+
+.code-meta strong {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+.code-meta span {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--ink-soft);
+}
+
+.code-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: flex-end;
+  margin-bottom: 1.1rem;
+}
+
+.code-heading h1 {
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 3vw, 1.8rem);
+  margin: 0.15rem 0 0;
+  letter-spacing: -0.02em;
+}
+
+.code-file {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+}
+
+.code-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.code-actions button {
+  cursor: pointer;
+  font: inherit;
+}
+
+.code-source {
+  margin: 0;
+  padding: 1.15rem 1.25rem;
+  border-radius: 12px;
+  background: var(--code-bg);
+  color: #d8e6f0;
+  overflow-x: auto;
+  box-shadow: var(--shadow);
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  line-height: 1.55;
+}
+
+.code-source code {
+  font-family: inherit;
+  white-space: pre;
+}
+
+.code-hint {
+  margin: 0.75rem 0 0;
+  font-size: 0.92rem;
+  color: var(--accent-deep);
+  font-family: var(--font-display);
+}
+
+.code-hint.is-error {
+  color: #a33;
+}
+
+@media (max-width: 640px) {
+  .code-toolbar {
+    align-items: stretch;
+  }
+
+  .code-actions {
+    width: 100%;
+  }
+}
