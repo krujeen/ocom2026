@@ -130,3 +130,14 @@
   border-top: 1px solid var(--line);
   margin: 2rem 0;
 }
+
+.markdown-body .katex-display {
+  margin: 1rem 0 1.35rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.35rem 0;
+}
+
+.markdown-body .katex {
+  font-size: 1.05em;
+}

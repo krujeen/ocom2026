@@ -9,6 +9,43 @@
     return;
   }
 
+  function renderMarkdownWithMath(md) {
+    const blocks = [];
+
+    // Display math: $$ ... $$
+    md = md.replace(/\$\$([\s\S]+?)\$\$/g, (_, tex) => {
+      const i = blocks.length;
+      blocks.push({ display: true, tex: tex.trim() });
+      return `\n\n@@MATH${i}@@\n\n`;
+    });
+
+    // Inline math: $ ... $ (หลัง protect $$ แล้ว)
+    md = md.replace(/(?<!\$)\$(?!\$)([^\$\n]+?)\$(?!\$)/g, (_, tex) => {
+      const i = blocks.length;
+      blocks.push({ display: false, tex: tex.trim() });
+      return `@@MATH${i}@@`;
+    });
+
+    let html = marked.parse(md);
+
+    html = html.replace(/@@MATH(\d+)@@/g, (_, idx) => {
+      const block = blocks[Number(idx)];
+      if (!block || typeof katex === "undefined") {
+        return block ? block.tex : "";
+      }
+      try {
+        return katex.renderToString(block.tex, {
+          displayMode: block.display,
+          throwOnError: false,
+        });
+      } catch {
+        return block.tex;
+      }
+    });
+
+    return html;
+  }
+
   fetch(src)
     .then((res) => {
       if (!res.ok) throw new Error("โหลดไฟล์ไม่สำเร็จ");
@@ -19,7 +56,7 @@
       if (titleMatch) {
         document.title = titleMatch[1] + " · OCOM 2026";
       }
-      content.innerHTML = marked.parse(md);
+      content.innerHTML = renderMarkdownWithMath(md);
     })
     .catch(() => {
       content.innerHTML =

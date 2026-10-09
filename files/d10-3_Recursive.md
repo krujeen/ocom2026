@@ -208,9 +208,9 @@ long long power_fast(long long a, int b) {
 
 ยกกำลังแล้วค่าใหญ่เกิน long long ในไม่กี่ขั้น โจทย์จึงมักถามเศษเมื่อหารด้วย m ใช้คุณสมบัตินี้เพื่อ mod แทรกทุกขั้นได้
 
-```latex
-(x \cdot y) \bmod m = \big((x \bmod m)\cdot(y \bmod m)\big) \bmod m
-```
+$$
+(x \cdot y) \bmod m = \bigl((x \bmod m)\cdot(y \bmod m)\bigr) \bmod m
+$$
 
 ```cpp
 long long power_mod(long long a, long long b, long long m) {
